@@ -27,10 +27,10 @@ var myRest = my.subtract(100, 1);
 
 describe('Test Suite for myMath', function() {
 	it('Testing add', function() {
-		expect(myTotal).toBe(13);
+		expect(myTotal).toBe(3);
 	});
 	it('Testing subtract', function() {
-		expect(myRest).toBe(199);
+		expect(myRest).toBe(99);
 	});
 });
 
