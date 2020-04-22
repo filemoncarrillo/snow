@@ -22,7 +22,7 @@ myMath.prototype = {
 	},
     type: 'myMath'
 };
-module.exports = myMath;</script>
+</script>
 		<sys_class_name>sys_script_include</sys_class_name>
 		<sys_created_by>admin</sys_created_by>
 		<sys_created_on>2020-04-14 22:51:37</sys_created_on>
