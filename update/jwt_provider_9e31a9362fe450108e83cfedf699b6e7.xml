@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="jwt_provider">
+    <jwt_provider action="INSERT_OR_UPDATE">
+        <expiry_interval>60</expiry_interval>
+        <jwt_api_script/>
+        <jwt_keystore_alias display_value="Salesforce JWT Keys">0f7021362fe450108e83cfedf699b657</jwt_keystore_alias>
+        <name>Salesforce JWT Provider</name>
+        <sys_class_name>jwt_provider</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-06 23:50:13</sys_created_on>
+        <sys_id>9e31a9362fe450108e83cfedf699b6e7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Salesforce JWT Provider</sys_name>
+        <sys_package display_value="Demo" source="x_488231_demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_scope>
+        <sys_update_name>jwt_provider_9e31a9362fe450108e83cfedf699b6e7</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-06 23:50:13</sys_updated_on>
+    </jwt_provider>
+</record_update>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_page_property">
+    <sys_ux_page_property action="INSERT_OR_UPDATE">
+        <choices>tab</choices>
+        <description>Workspace level navigation mode</description>
+        <name>ws_navigation_mode</name>
+        <page display_value="Demo">a53ffe0e2fe010108e83cfedf699b6d2</page>
+        <suffix/>
+        <sys_class_name>sys_ux_page_property</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-04 22:44:16</sys_created_on>
+        <sys_id>2d3ffe0e2fe010108e83cfedf699b6da</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ws_navigation_mode</sys_name>
+        <sys_package display_value="Demo" source="x_488231_demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_scope>
+        <sys_update_name>sys_ux_page_property_2d3ffe0e2fe010108e83cfedf699b6da</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-04 22:44:16</sys_updated_on>
+        <type>choicelist</type>
+        <unique_name>x_488231_demo.ws_navigation_mode</unique_name>
+        <value>tab</value>
+    </sys_ux_page_property>
+    <sys_translated_text action="delete_multiple" query="documentkey=2d3ffe0e2fe010108e83cfedf699b6da"/>
+</record_update>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl>cf9d01d3e73003009d6247e603f6a990</enforce_acl>
+        <http_method>POST</http_method>
+        <name>POST</name>
+        <operation_script><![CDATA[function isUsingBasicAuth(headers) {
+	
+    var authHeader = headers.authorization;
+    if (authHeader.indexOf("Basic")> -1)
+    {
+		return true;
+    }
+	return false;
+	
+}
+
+(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+	
+	/* staging
+    var client_id = "eMnryJSn1Ii5xSa6Cp6m75OLCwp6is5o";
+	var client_secret = "NFSc3zs5m8_nP_m7X95A6eMJQ2tRI_khUAicgBKmvFBiip7HDXGVo0Nn3n3VxrS8";
+	var audience = "https://icob-sso.teradatacloud.io/api/dev/";
+	var site = "https://jp0kq0ec1f.execute-api.us-west-2.amazonaws.com/icaws/sites/TDICAM1627DEV05";
+	*/
+	var client_id = "81WxRJ29QgaQGgszUreL15mF80ZUQtrz";
+	var client_secret = "shpfhLuf_xW7Z4w8ErqXPs5OQjPrBpg8AvM-D8AXrW9wBteo9f22RoMyblaTYWK6";
+	var audience = "https://icob-sso.teradatacloud.io/api/stage/";
+	var offering_service_site = "https://kxi0148xxh.execute-api.us-west-2.amazonaws.com/icaws/sites/";
+	//TDICAM1386DEV05
+
+    if (isUsingBasicAuth(request.headers)) {
+		
+		return { "response" : "Basic Authentication is not supported"};
+    }
+	
+	var request_body = request.body.nextEntry();
+	var site_id = request_body.site_id;
+
+	var site = offering_service_site + site_id;
+	
+	var message = new Auth2Message(client_id, client_secret, audience);
+
+	var token = message.getToken();
+	gs.info(token);
+
+
+	if (token != "") {
+		response = message.callGetWithOAuth(site);
+		parsedJson = JSON.parse(response);
+		var siteId = parsedJson.site_id;
+		var status = parsedJson.status;
+		var snowMessage = { 
+			"service_now_says": {
+				"site_id": siteId,
+				"status": status,
+				"whole_message_from_offering": parsedJson
+			}
+		};
+		gs.info("Site ID is " + siteId);
+		gs.info("Status:" + status);
+	}
+	return snowMessage;
+
+})(request, response);]]></operation_script>
+        <operation_uri>/api/x_488231_demo/offering</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>true</requires_snc_internal_role>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-15 23:32:27</sys_created_on>
+        <sys_id>d173372d2f3490108e83cfedf699b6b4</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_name>POST</sys_name>
+        <sys_package display_value="Demo" source="x_488231_demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_scope>
+        <sys_update_name>sys_ws_operation_d173372d2f3490108e83cfedf699b6b4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-18 17:18:25</sys_updated_on>
+        <web_service_definition display_value="Offering">4772f7e92f3490108e83cfedf699b612</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>

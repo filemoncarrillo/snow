@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copied_from/>
+        <description>Run Server Side Validation Script</description>
+        <display_name>Run Server Side Script</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>1</order>
+        <snapshot/>
+        <step_config display_value="Run Server Side Script">41de4a935332120028bc29cac2dc349a</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-16 00:49:14</sys_created_on>
+        <sys_id>4424c8b92f7490108e83cfedf699b622</sys_id>
+        <sys_mod_count>27</sys_mod_count>
+        <sys_name>Run Server Side Script</sys_name>
+        <sys_package display_value="Demo" source="x_488231_demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_scope>
+        <sys_update_name>sys_atf_step_4424c8b92f7490108e83cfedf699b622</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-16 03:17:06</sys_updated_on>
+        <table/>
+        <test display_value="TestAuth2Message">bf3304b92f7490108e83cfedf699b638</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=4424c8b92f7490108e83cfedf699b622"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>4424c8b92f7490108e83cfedf699b622</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-16 00:49:14</sys_created_on>
+        <sys_id>634504f92f7490108e83cfedf699b6a6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-16 00:49:14</sys_updated_on>
+        <value>3.1</value>
+        <variable display_value="">42f2564b73031300440211d8faf6a777</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>4424c8b92f7490108e83cfedf699b622</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-16 00:49:14</sys_created_on>
+        <sys_id>ab4504f92f7490108e83cfedf699b6a6</sys_id>
+        <sys_mod_count>27</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-16 03:17:06</sys_updated_on>
+        <value>(function(outputs, steps, stepResult, assertEqual) {&#13;
+	describe('my suite of script tests', function() {&#13;
+		&#13;
+		var client_id = "my_client_id";&#13;
+		var client_secret = "my_client_secret";&#13;
+		var audience = "my_audience";&#13;
+		&#13;
+		it('Test Constructor.', function() {&#13;
+			&#13;
+			var auth2Message = new Auth2Message(client_id, client_secret, audience);&#13;
+			expect(auth2Message.client_id).toBe(client_id);&#13;
+			expect(auth2Message.client_secret).toBe(client_secret);&#13;
+			expect(auth2Message.audience).toBe(audience);&#13;
+		});&#13;
+		&#13;
+		it('Test buildMessageForGetToken.', function() {&#13;
+			&#13;
+			var endpoint = "https://icob-sso.teradatacloud.io/oauth/token";&#13;
+			var auth2Message = new Auth2Message(client_id, client_secret, audience);&#13;
+			var applicationJson = auth2Message.applicationJson;&#13;
+			var restMessage = new sn_ws.RESTMessageV2();&#13;
+			auth2Message.buildMessageForGetToken(restMessage);&#13;
+			var headers = restMessage.getRequestHeaders();&#13;
+			var body = restMessage.getRequestBody();&#13;
+			var grant_type = body.grant_type;&#13;
+&#13;
+			expect(restMessage.getEndpoint()).toBe(endpoint);&#13;
+			contentType = headers["Content-Type"];&#13;
+			expect(contentType).toBe(applicationJson);&#13;
+			expect(body).toContain("client_credentials");&#13;
+		});&#13;
+	&#13;
+		&#13;
+		it('Test buildMessageForCallGetWithOAuth.', function() {&#13;
+			&#13;
+			var endpoint = "myendpoint";&#13;
+			var auth2Message = new Auth2Message(client_id, client_secret, audience);&#13;
+			var applicationJson = auth2Message.applicationJson;&#13;
+&#13;
+			auth2Message.access_token = "some_token";&#13;
+			var restMessage = new sn_ws.RESTMessageV2();&#13;
+			auth2Message.buildMessageForCallGetWithOAuth(restMessage, endpoint);&#13;
+			&#13;
+			var headers = restMessage.getRequestHeaders();&#13;
+&#13;
+			expect(restMessage.getEndpoint()).toBe(endpoint);&#13;
+			contentType = headers["Content-Type"];&#13;
+			authorization = headers["Authorization"];&#13;
+			expect(contentType).toBe(applicationJson);&#13;
+			expect(authorization).toBe(auth2Message.access_token);&#13;
+		});	&#13;
+		&#13;
+	});&#13;
+&#13;
+})(outputs, steps, stepResult, assertEqual);&#13;
+jasmine.getEnv().execute();&#13;
+</value>
+        <variable display_value="">989d9e235324220002c6435723dc3484</variable>
+    </sys_variable_value>
+</record_update>

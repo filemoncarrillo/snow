@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_488231_demo.Auth2Message</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>Auth2Message</name>
+        <script><![CDATA[var Auth2Message = Class.create();
+
+Auth2Message.prototype = {
+    initialize: function(client_id, client_secret, audience) {
+        this.client_id = client_id;
+        this.client_secret = client_secret;
+        this.audience = audience;
+        this.grant_type = "client_credentials";
+        this.post = "POST";
+        this.get = "GET";
+        this.contentType = "Content-Type";
+        this.applicationJson = "application/json";
+        this.authorization = "Authorization";
+		this.access_token = "";
+    },
+
+    buildMessageForGetToken: function(restMessage) {
+
+        var tokenEndpoint = "https://icob-sso.teradatacloud.io/oauth/token";
+
+        var jsonPayload = {
+            "client_id": this.client_id,
+            "client_secret": this.client_secret,
+            "audience": this.audience,
+            "grant_type": this.grant_type
+        };
+        xmlPayload = JSON.stringify(jsonPayload);
+        restMessage.setEndpoint(tokenEndpoint);
+        restMessage.setHttpMethod(this.post);
+        restMessage.setRequestHeader(this.contentType, this.applicationJson);
+        restMessage.setRequestBody(xmlPayload);
+        return restMessage;
+    },
+
+    getToken: function() {
+
+        this.access_token = "";
+		var restMessage = new sn_ws.RESTMessageV2();
+        this.buildMessageForGetToken(restMessage);
+        try {
+            var response = restMessage.execute();
+            var responseBody = response.getBody();
+			if (responseBody != "") {
+				var parsedJson = JSON.parse(responseBody);
+				this.access_token = parsedJson.access_token;
+			}
+        }
+        catch(ex) {
+            var message = ex.message;
+			gs.error(message);
+        }
+
+        return this.access_token;
+    },
+
+    buildMessageForCallGetWithOAuth: function(restMessage, endpoint) {
+
+        if (this.access_token == "") {
+            this.access_token = this.getToken();
+        }
+
+        restMessage.setEndpoint(endpoint);
+        restMessage.setHttpMethod(this.get);
+        restMessage.setRequestHeader(this.contentType, this.applicationJson);
+        restMessage.setRequestHeader(this.authorization, this.access_token);
+        return restMessage;
+    },
+
+    callGetWithOAuth: function(endpoint) {
+
+		var restMessage = new sn_ws.RESTMessageV2();
+        this.buildMessageForCallGetWithOAuth(restMessage, endpoint);
+
+        try {
+            var response = restMessage.execute();
+            var responseBody = response.getBody();
+            var httpStatus = response.getStatusCode();
+        }
+        catch(ex) {
+            var message = ex.message;
+			gs.eror(message);
+        }
+        return responseBody;
+    },
+	
+    type: 'Auth2Message'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-15 21:27:20</sys_created_on>
+        <sys_id>a3c653e12ff090108e83cfedf699b6b7</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_name>Auth2Message</sys_name>
+        <sys_package display_value="Demo" source="x_488231_demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_scope>
+        <sys_update_name>sys_script_include_a3c653e12ff090108e83cfedf699b6b7</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-16 01:55:18</sys_updated_on>
+    </sys_script_include>
+</record_update>

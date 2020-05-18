@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_definition">
+    <sys_ws_definition action="DELETE">
+        <active>true</active>
+        <base_uri>/api/x_488231_demo/v1</base_uri>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_version>No active default version</default_version>
+        <doc_link/>
+        <enforce_acl>cf9d01d3e73003009d6247e603f6a990</enforce_acl>
+        <is_versioned>false</is_versioned>
+        <name>v1</name>
+        <namespace>x_488231_demo</namespace>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <service_id>v1</service_id>
+        <short_description/>
+        <sys_class_name>sys_ws_definition</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-08 00:41:45</sys_created_on>
+        <sys_id>edd6b28b2f6890108e83cfedf699b65c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>v1</sys_name>
+        <sys_package display_value="Demo" source="x_488231_demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_scope>
+        <sys_update_name>sys_ws_definition_edd6b28b2f6890108e83cfedf699b65c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-08 00:41:45</sys_updated_on>
+    </sys_ws_definition>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Demo">edbe3a0e2fe010108e83cfedf699b6c3</application>
+        <file_path/>
+        <instance_id>3583f793dba75fc08264f70fbf9619d7</instance_id>
+        <instance_name>dev68372</instance_name>
+        <name>sys_ws_definition_edd6b28b2f6890108e83cfedf699b65c</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_definition"><sys_ws_definition action="INSERT_OR_UPDATE"><active>true</active><base_uri>/api/x_488231_demo/v1</base_uri><consumes>application/json,application/xml,text/xml</consumes><consumes_customized>false</consumes_customized><default_version>No active default version</default_version><doc_link/><enforce_acl>cf9d01d3e73003009d6247e603f6a990</enforce_acl><is_versioned>false</is_versioned><name>v1</name><namespace>x_488231_demo</namespace><produces>application/json,application/xml,text/xml</produces><produces_customized>false</produces_customized><service_id>v1</service_id><short_description/><sys_class_name>sys_ws_definition</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-05-08 00:41:45</sys_created_on><sys_id>edd6b28b2f6890108e83cfedf699b65c</sys_id><sys_mod_count>0</sys_mod_count><sys_name>v1</sys_name><sys_package display_value="Demo" source="x_488231_demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_package><sys_policy/><sys_scope display_value="Demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_scope><sys_update_name>sys_ws_definition_edd6b28b2f6890108e83cfedf699b65c</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-05-08 00:41:45</sys_updated_on></sys_ws_definition></record_update>]]></payload>
+        <payload_hash>2112410283</payload_hash>
+        <record_name>v1</record_name>
+        <reverted_from/>
+        <source>a1be3a0e2fe010108e83cfedf699b6c6</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-08 00:41:45</sys_created_on>
+        <sys_id>a7d6f28b2f6890108e83cfedf699b6b0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>171f1bb21c40000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-08 00:41:45</sys_updated_on>
+        <type>Scripted REST API</type>
+        <update_guid>efd6f28b806890103ce5301f16e405af</update_guid>
+        <update_guid_history>efd6f28b806890103ce5301f16e405af:2112410283</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-08 00:42:58</sys_created_on>
+        <sys_db_object display_value="" name="sys_ws_definition">sys_ws_definition</sys_db_object>
+        <sys_id>b28611b9640e4d448dddf7db7db280e1</sys_id>
+        <sys_metadata>edd6b28b2f6890108e83cfedf699b65c</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>v1</sys_name>
+        <sys_package display_value="Demo" source="x_488231_demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_scope>
+        <sys_scope_delete display_value="">043d45d0e9794db4802b2302587605c1</sys_scope_delete>
+        <sys_update_name>sys_ws_definition_edd6b28b2f6890108e83cfedf699b65c</sys_update_name>
+        <sys_update_version display_value="sys_ws_definition_edd6b28b2f6890108e83cfedf699b65c">a7d6f28b2f6890108e83cfedf699b6b0</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-08 00:42:58</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

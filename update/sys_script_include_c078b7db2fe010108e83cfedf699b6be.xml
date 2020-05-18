@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_488231_demo.RestapiInvokerGlobal</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>RestapiInvokerGlobal</name>
+        <script><![CDATA[var RestapiInvokerGlobal = Class.create();
+
+
+
+RestapiInvokerGlobal.prototype = {
+	
+	executeAPI: function(requestBody,orderGuide) {
+		
+		var gr = new GlideRecord("sc_cat_item_guide");
+		if (gr.get("name",orderGuide)) {
+			var sog = new SNC.ScriptableOrderGuide(gr.getValue("sys_id"));
+			var result = sog.process(new JSON().encode(requestBody));
+			if(!result){
+				gs.log("Processing the scriptable order guide failed with message: " + sog.getMessage());
+				return sog.getMessage();}
+				else {
+					var request = sog.getRequest();
+					gs.info("Request created - " + request.sys_id);
+					var output = {};
+						output.request_id = request.sys_id.getDisplayValue();
+						output.request_number=request.number.getDisplayValue();
+						output.requested_for=request.requested_for.getDisplayValue();
+						output.opened_at= request.opened_at.getDisplayValue();
+						output.opened_by= request.opened_by.getDisplayValue();
+						output.request_state=request.state.getDisplayValue();
+						
+						var itemArray = [];
+						var item = new GlideRecord('sc_req_item');
+						item.addQuery('request',request.sys_id);
+						item.query();
+						while(item.next())
+							{
+							itemArray.push(item.getValue('sys_id'));
+						}
+						gs.info(itemArray);
+						var mainJson = [];
+						for (var i=0;i<itemArray.length;i++)
+							{
+							var reqItem = new GlideRecord('sc_req_item');
+							reqItem.addQuery('sys_id',itemArray[i]);
+							reqItem.query();
+							if(reqItem.next())
+								{
+								var reqItemArray = {};
+									reqItemArray.number = reqItem.getValue('number');
+									reqItemArray.sys_id = reqItem.getValue('sys_id');
+									reqItemArray.cat_item = reqItem.getDisplayValue('cat_item');
+									reqItemArray.opened_at = reqItem.getValue('opened_at');
+									reqItemArray.opened_by = reqItem.getDisplayValue('opened_by');
+									reqItemArray.state = reqItem.getDisplayValue('state');
+									reqItemArray.stage = reqItem.getValue('stage');
+									gs.info(global.JSON.stringify(reqItemArray));
+									mainJson.push(reqItemArray);
+									
+								}
+							}
+							output.request_items = mainJson;
+							return output;
+						}
+					}
+				},
+				
+				
+				getUserSysID: function(username)
+				{
+					var usr = new GlideRecord('sys_user');
+					usr.addQuery('user_name',username);
+					usr.query();
+					if(usr.next())
+						{
+						gs.log("User: "+username+" /sys_id:"+usr.sys_id);
+						return usr.sys_id;
+					}
+				},
+				
+				
+				getCatalogItemSysId: function(catalogItem)
+				{
+					var catItem = new GlideRecord('sc_cat_item');
+					catItem.addQuery('name',catalogItem);
+					catItem.query();
+					while(catItem.next())
+						{
+						return catItem.sys_id;
+					}
+				},
+				
+				
+				
+				getaffectedCIs: function(ciSysId)
+				{
+					var gRU = new GlideRecordUtil();
+					//affectedCI.push(tci.getValue('sys_id'));
+					var tableName = gRU.getCIGR(ciSysId).sys_meta.name;
+					gs.log(tableName);
+					var resp = [];
+					var gr = new GlideRecord(tableName);
+					gr.addQuery('sys_id', ciSysId);
+					gr.query();
+					if (gr.next()) {
+						var gRU1 = new GlideRecordUtil();
+						var fieldList = gRU1.getFields(gr);
+						var user = {};
+							fieldList.forEach(function(element)
+							{
+								user[element] = gr.getDisplayValue(element);
+							});
+							//resp.push(user);
+							return user;
+						}
+					},
+					
+					
+					//Get Reference Variable SysIds
+					getVariablesSysIds: function(itemId,variables){
+						variables = variables || {};
+							var varGr = new GlideRecord('item_option_new');
+							var qr = varGr.addQuery('cat_item', itemId);
+							var variableSet = new sn_sc.CatItem(itemId).getVariableSet();
+							if(variableSet.length > 0)
+								qr.addOrCondition("variable_set", variableSet);
+							varGr.addActiveQuery();
+							varGr.query();
+							while(varGr.next()) {
+								if(varGr.type == 8 && !gs.nil(variables[varGr.getValue('name')])){
+									var varValue = variables[varGr.getValue('name')];
+									var query = '';
+									if(!gs.nil(variables[varGr.getValue('name') + '_lookup_field']))
+										{
+										query = variables[varGr.getValue('name') + '_lookup_field'] + "=" + varValue;
+									} else {
+										query = "sys_id=" + varValue;
+										query += "^ORuser_name=" + varValue;
+										query += "^ORnumber=" + varValue;
+										query += "^ORname=" + varValue;
+									}
+									
+									variables[varGr.getValue('name')] = this.getRecordSysId(varGr.reference, query);
+									
+								}
+								
+								if(varGr.type == 21 && !gs.nil(variables[varGr.getValue('name')])){
+									var varValue = variables[varGr.getValue('name')];
+									var query = '';
+									if(!gs.nil(variables[varGr.getValue('name') + '_lookup_field']))
+										{
+										query = variables[varGr.getValue('name') + '_lookup_field'] + "IN" + varValue;
+									} else {
+										query = "sys_idIN" + varValue;
+										query += "^ORuser_nameIN" + varValue;
+										query += "^ORnumberIN" + varValue;
+										query += "^ORnameIN" + varValue;
+									}
+									
+									variables[varGr.getValue('name')] = this.getRecordSysIdList(varGr.list_table, query);
+									
+								}
+							}
+							gs.print(JSON.stringify(variables));
+							return variables;
+						},
+						
+						
+						getRecordSysId: function(table_name, encoded_query) {
+							gs.info("Here is the encoded_query: " + table_name + ' ' + encoded_query);
+							
+							var gr = new GlideRecord(table_name);
+							gr.addEncodedQuery(encoded_query);
+							gr.setLimit(1);
+							gr.query();
+							
+							if(gr.next()){
+								return gr.getValue("sys_id");
+							}
+							else {
+								return '';
+							}
+						},
+						
+						getRecordSysIdList: function(table_name, encoded_query) {
+							gs.info("Here is the encoded_query: " + table_name + ' ' + encoded_query);
+							
+							var sys_id_list = [];
+							var gr = new GlideRecord(table_name);
+							gr.addEncodedQuery(encoded_query);
+							gr.query();
+							
+							gs.info("Here is the count " + gr.getRowCount());
+							
+							while(gr.next()){
+								
+								sys_id_list.push(gr.getValue("sys_id"));
+							}
+							
+							gs.info("Here is the sys_id_list.join(): " + sys_id_list.join());
+							
+							return sys_id_list.join();
+						},
+						
+						
+						/*
+						getVariablesSysIds: function(ItemSysId,variables) {
+							
+							for(var key in variables)
+								{
+								if(variables.hasOwnProperty(key) && variables[key] && typeof(variables[key]) !== 'string')
+									variables[key]=variables[key].toString();
+								
+								var varGr = new GlideRecord('item_option_new');
+								var qr = varGr.addQuery('cat_item', ItemSysId);
+								var variableSet = new sn_sc.CatItem(ItemSysId).getVariableSet();
+								if(variableSet.length > 0)
+									qr.addOrCondition("variable_set", variableSet);
+								varGr.addActiveQuery();
+								// varGr.addQuery('mandatory', true);
+								varGr.query();
+								// gs.print(variable[key] + ':' + varGr.reference);
+								while(varGr.next()) {
+									if(varGr.type == '8')
+										{
+										var objTable = new TableUtils(varGr.reference);
+										tableName = objTable.getAbsoluteBase();
+										if (tableName!='task') {        //Check if parent table is task
+											gQuery = 'name='+variables[key];} else {gQuery = 'number='+variables[key];}
+												var tb = new GlideRecord(tableName);
+												tb.addQuery(gQuery);
+												tb.query();
+												if(tb.next())
+													{
+													variables[key]=tb.getValue('sys_id');
+												}
+											} else { variables[key]=variables[key]; }
+											}
+										}//gs.print(JSON.stringify(variables));
+										return variables;
+									},
+									
+ 									*/
+									
+									type: 'RestapiInvokerGlobal'
+								};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-09 00:07:12</sys_created_on>
+        <sys_id>c078b7db2fe010108e83cfedf699b6be</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>RestapiInvokerGlobal</sys_name>
+        <sys_package display_value="Demo" source="x_488231_demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_scope>
+        <sys_update_name>sys_script_include_c078b7db2fe010108e83cfedf699b6be</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-09 00:14:18</sys_updated_on>
+    </sys_script_include>
+</record_update>

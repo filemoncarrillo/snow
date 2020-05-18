@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copied_from/>
+        <description>Run Server Side Validation Script</description>
+        <display_name>Run Server Side Script</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>1</order>
+        <snapshot/>
+        <step_config display_value="Run Server Side Script">41de4a935332120028bc29cac2dc349a</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-04 23:21:00</sys_created_on>
+        <sys_id>a03647c22f2410108e83cfedf699b663</sys_id>
+        <sys_mod_count>22</sys_mod_count>
+        <sys_name>Run Server Side Script</sys_name>
+        <sys_package display_value="Demo" source="x_488231_demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_scope>
+        <sys_update_name>sys_atf_step_a03647c22f2410108e83cfedf699b663</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-05 01:08:53</sys_updated_on>
+        <table/>
+        <test display_value="MyMathTest">cb068bc22f2410108e83cfedf699b658</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=a03647c22f2410108e83cfedf699b663"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>a03647c22f2410108e83cfedf699b663</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-04 23:21:00</sys_created_on>
+        <sys_id>77974fc22f2410108e83cfedf699b633</sys_id>
+        <sys_mod_count>22</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-05 01:08:53</sys_updated_on>
+        <value>(function(outputs, steps, stepResult, assertEqual) {&#13;
+	describe('my suite of script tests', function() {&#13;
+	&#13;
+		it('Test MyMath add function.', function() {&#13;
+			&#13;
+			var math = new MyMath();&#13;
+			math = jasmine.createSpyObj('math', ['add']);&#13;
+			math.add.and.callFake(function() {&#13;
+				gs.info('spiedMath.add called!');&#13;
+				return 99;&#13;
+			});&#13;
+			math.add(1,2);&#13;
+			expect(math.add).toHaveBeenCalled();&#13;
+			expect(math.add(1,2)).toBe(99);&#13;
+		});&#13;
+		&#13;
+		it('Test MyMath get incident function Real.', function() {&#13;
+			var math = new MyMath();&#13;
+			var incident_number = "INC0000060";&#13;
+			&#13;
+			var number =  math.get_incident(incident_number).number;&#13;
+			expect(String(number)).toBe(incident_number);&#13;
+		});&#13;
+		&#13;
+		it('Test MyMath get incident function Mocked.', function() {&#13;
+			var math = new MyMath();&#13;
+			var incident_number = "INC0000060";&#13;
+&#13;
+			math = jasmine.createSpyObj('math', ['get_incident']);&#13;
+			math.get_incident.and.callFake(function() {&#13;
+				gs.info('spiedMath.get_incident called!');&#13;
+				return {"number": "INC0000060_FAKE"};&#13;
+			});&#13;
+			math.get_incident(incident_number);&#13;
+			expect(math.get_incident).toHaveBeenCalled();&#13;
+			&#13;
+			var number =  math.get_incident(incident_number).number;&#13;
+			expect(String(number)).toBe("INC0000060_FAKE");&#13;
+		});&#13;
+	});&#13;
+&#13;
+})(outputs, steps, stepResult, assertEqual);&#13;
+jasmine.getEnv().execute();&#13;
+</value>
+        <variable display_value="">989d9e235324220002c6435723dc3484</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>a03647c22f2410108e83cfedf699b663</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-04 23:21:00</sys_created_on>
+        <sys_id>bf974fc22f2410108e83cfedf699b632</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-04 23:21:00</sys_updated_on>
+        <value>3.1</value>
+        <variable display_value="">42f2564b73031300440211d8faf6a777</variable>
+    </sys_variable_value>
+</record_update>

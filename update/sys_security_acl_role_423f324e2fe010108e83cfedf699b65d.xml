@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-04 22:44:18</sys_created_on>
+        <sys_id>423f324e2fe010108e83cfedf699b65d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x.488231.workspace.demo.demo</sys_name>
+        <sys_package display_value="Demo" source="x_488231_demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_scope>
+        <sys_security_acl display_value="x.488231.workspace.demo">8e3f324e2fe010108e83cfedf699b654</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_423f324e2fe010108e83cfedf699b65d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-04 22:44:18</sys_updated_on>
+        <sys_user_role display_value="demo" name="demo">4a3f324e2fe010108e83cfedf699b658</sys_user_role>
+        <transaction_id/>
+    </sys_security_acl_role>
+</record_update>

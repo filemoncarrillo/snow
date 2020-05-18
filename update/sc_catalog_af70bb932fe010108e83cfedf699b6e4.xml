@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_catalog">
+    <sc_catalog action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <background_color>white</background_color>
+        <description>Cloud System Provisioning</description>
+        <desktop_continue_shopping/>
+        <desktop_home_page/>
+        <desktop_image/>
+        <editors/>
+        <enable_wish_list>false</enable_wish_list>
+        <manager display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</manager>
+        <sys_class_name>sc_catalog</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-08 23:32:16</sys_created_on>
+        <sys_id>af70bb932fe010108e83cfedf699b6e4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Cloud System Provisioning</sys_name>
+        <sys_package display_value="Demo" source="x_488231_demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_scope>
+        <sys_update_name>sc_catalog_af70bb932fe010108e83cfedf699b6e4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-08 23:32:16</sys_updated_on>
+        <title>Cloud System Provisioning</title>
+    </sc_catalog>
+    <sys_translated_text action="delete_multiple" query="documentkey=af70bb932fe010108e83cfedf699b6e4"/>
+</record_update>
