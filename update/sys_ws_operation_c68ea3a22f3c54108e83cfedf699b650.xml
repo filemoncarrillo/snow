@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl>616bfa262f7854108e83cfedf699b653</enforce_acl>
+        <http_method>POST</http_method>
+        <name>post</name>
+        <operation_script><![CDATA[function isUsingBasicAuth(headers) {
+	
+    var authHeader = headers.authorization;
+    if (authHeader.indexOf("Basic")> -1)
+    {
+		return true;
+    }
+	return false;
+	
+}
+
+(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+	
+
+    if (isUsingBasicAuth(request.headers)) {
+		
+		return { "response" : "Basic Authentication is not supported"};
+    }
+	var myprop = gs.getProperty("Demo.MyFirstProperty");
+    return {"message": "hello world " + myprop };
+
+})(request, response);]]></operation_script>
+        <operation_uri>/api/x_488231_demo/demo2/submit_request</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/submit_request</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>true</requires_snc_internal_role>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-19 01:44:38</sys_created_on>
+        <sys_id>c68ea3a22f3c54108e83cfedf699b650</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>post</sys_name>
+        <sys_package display_value="Demo" source="x_488231_demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_scope>
+        <sys_update_name>sys_ws_operation_c68ea3a22f3c54108e83cfedf699b650</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-19 20:03:33</sys_updated_on>
+        <web_service_definition display_value="Demo2">14f261872f6490108e83cfedf699b623</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>

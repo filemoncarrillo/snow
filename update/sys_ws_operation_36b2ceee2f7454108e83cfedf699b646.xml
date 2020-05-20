@@ -20,10 +20,16 @@
 
 (function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
 	
-	var client_id = "81WxRJ29QgaQGgszUreL15mF80ZUQtrz";
-	var client_secret = "shpfhLuf_xW7Z4w8ErqXPs5OQjPrBpg8AvM-D8AXrW9wBteo9f22RoMyblaTYWK6";
-	var audience = "https://icob-sso.teradatacloud.io/api/stage/";
-	var offering_service_site = "https://kxi0148xxh.execute-api.us-west-2.amazonaws.com/icaws/sites/";
+	//var client_id = "81WxRJ29QgaQGgszUreL15mF80ZUQtrz";
+	//var client_secret = "shpfhLuf_xW7Z4w8ErqXPs5OQjPrBpg8AvM-D8AXrW9wBteo9f22RoMyblaTYWK6";
+	//var audience = "https://icob-sso.teradatacloud.io/api/stage/";
+	//var offering_service_site = "https://kxi0148xxh.execute-api.us-west-2.amazonaws.com/icaws/sites/";
+	
+	var prop = new ObsProperty();
+	var client_id = prop.getProperty("offering_client_id");
+	var client_secret = prop.getProperty("offering_client_secret");
+	var audience = prop.getProperty("offering_audience");
+	var offering_service_site = prop.getProperty("offering_endpoint");
 
     if (isUsingBasicAuth(request.headers)) {
 		
@@ -68,14 +74,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-05-18 17:55:35</sys_created_on>
         <sys_id>36b2ceee2f7454108e83cfedf699b646</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>GET</sys_name>
         <sys_package display_value="Demo" source="x_488231_demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_package>
         <sys_policy/>
         <sys_scope display_value="Demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_scope>
         <sys_update_name>sys_ws_operation_36b2ceee2f7454108e83cfedf699b646</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-05-18 18:00:28</sys_updated_on>
+        <sys_updated_on>2020-05-20 23:12:00</sys_updated_on>
         <web_service_definition display_value="Offering">4772f7e92f3490108e83cfedf699b612</web_service_definition>
         <web_service_version/>
     </sys_ws_operation>

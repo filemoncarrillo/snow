@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="oauth_entity_profile">
+    <oauth_entity_profile action="INSERT_OR_UPDATE">
+        <default>true</default>
+        <grant_type>authorization_code</grant_type>
+        <jwt_provider/>
+        <name>myprofile</name>
+        <oauth_entity display_value="Client Registry">b665372a2f3c54108e83cfedf699b6f7</oauth_entity>
+        <sys_class_name>oauth_entity_profile</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-19 02:18:54</sys_created_on>
+        <sys_id>d365f3662f3c54108e83cfedf699b6e8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>myprofile</sys_name>
+        <sys_package display_value="Demo" source="x_488231_demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_scope>
+        <sys_update_name>oauth_entity_profile_d365f3662f3c54108e83cfedf699b6e8</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-19 02:18:54</sys_updated_on>
+    </oauth_entity_profile>
+</record_update>

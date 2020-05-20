@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
+        <description/>
+        <ignore_cache>false</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_488231_demo.MyFirstProperty2</name>
+        <read_roles/>
+        <suffix>MyFirstProperty2</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-20 22:53:27</sys_created_on>
+        <sys_id>347a159f2f7cd4108e83cfedf699b6a1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_488231_demo.MyFirstProperty2</sys_name>
+        <sys_package display_value="Demo" source="x_488231_demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_scope>
+        <sys_update_name>sys_properties_347a159f2f7cd4108e83cfedf699b6a1</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-20 22:53:27</sys_updated_on>
+        <type>password</type>
+        <value>{{gpaes}}KZSL/cNVVccehaR4mKsGdA==</value>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=347a159f2f7cd4108e83cfedf699b6a1"/>
+</record_update>

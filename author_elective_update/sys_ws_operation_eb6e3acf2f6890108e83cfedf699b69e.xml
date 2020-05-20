@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="DELETE">
+        <active>true</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri>/api/x_488231_demo/tdcsn/submit_request</default_operation_uri>
+        <enforce_acl>beae0fdc2f3410108e83cfedf699b667</enforce_acl>
+        <http_method>POST</http_method>
+        <name>submit_request_post</name>
+        <operation_script><![CDATA[function isUsingBasicAuth(headers) {
+	
+    var authHeader = headers.authorization;
+    if (authHeader.indexOf("Basic")> -1)
+    {
+		return true;
+    }
+	return false;
+	
+}
+
+(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+
+
+    if (isUsingBasicAuth(request.headers)) {
+		
+		return { "response" : "Basic Authentication is not supported"};
+    }
+	
+	var request_body = request.body.nextEntry();
+	
+	//var quantity = '' + request_body.sysparm_quantity;
+	
+	var apiObj = new global.RestapiInvokerGlobal();
+
+	var quantity = '1';
+	var requested_for = '' + apiObj.getUserSysID(request_body.requester);
+	var noValidation =  (request_body.sysparm_no_validation == 'true');
+	
+	if (!/^\+?([0-9]*)$/.test(quantity))
+		throw new sn_ws_err.BadRequestError("Invalid Quantity value");
+	else
+		request_body.sysparm_quantity = quantity;
+	
+	
+	//var itemId = '' + request.pathParams.sys_id;
+	var itemId = '' + apiObj.getCatalogItemSysId(request_body.service_name);
+	request_body.sysparm_id = itemId;
+	
+    return {"message": "Hey "+request_body.requester+" your sys_id is "+requested_for, "will call service catalog": request_body.service_name };
+	
+})(request, response);]]></operation_script>
+        <operation_uri>/api/x_488231_demo/v1/tdcsn/submit_request</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/submit_request</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>true</requires_snc_internal_role>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-08 01:15:41</sys_created_on>
+        <sys_id>eb6e3acf2f6890108e83cfedf699b69e</sys_id>
+        <sys_mod_count>30</sys_mod_count>
+        <sys_name>submit_request_post</sys_name>
+        <sys_package display_value="Demo" source="x_488231_demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_scope>
+        <sys_update_name>sys_ws_operation_eb6e3acf2f6890108e83cfedf699b69e</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-12 23:15:16</sys_updated_on>
+        <web_service_definition display_value="tdcsn">2227fe8f2f6890108e83cfedf699b609</web_service_definition>
+        <web_service_version display_value="v1">d677f2cf2f6890108e83cfedf699b653</web_service_version>
+    </sys_ws_operation>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Demo">edbe3a0e2fe010108e83cfedf699b6c3</application>
+        <file_path/>
+        <instance_id>3583f793dba75fc08264f70fbf9619d7</instance_id>
+        <instance_name>dev68372</instance_name>
+        <name>sys_ws_operation_eb6e3acf2f6890108e83cfedf699b69e</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_ws_operation"&gt;&lt;sys_ws_operation action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;consumes&gt;application/json,application/xml,text/xml&lt;/consumes&gt;&lt;consumes_customized&gt;false&lt;/consumes_customized&gt;&lt;default_operation_uri&gt;/api/x_488231_demo/tdcsn/submit_request&lt;/default_operation_uri&gt;&lt;enforce_acl&gt;beae0fdc2f3410108e83cfedf699b667&lt;/enforce_acl&gt;&lt;http_method&gt;POST&lt;/http_method&gt;&lt;name&gt;submit_request_post&lt;/name&gt;&lt;operation_script&gt;&lt;![CDATA[function isUsingBasicAuth(headers) {
+	
+    var authHeader = headers.authorization;
+    if (authHeader.indexOf("Basic")&gt; -1)
+    {
+		return true;
+    }
+	return false;
+	
+}
+
+(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+
+
+    if (isUsingBasicAuth(request.headers)) {
+		
+		return { "response" : "Basic Authentication is not supported"};
+    }
+	
+	var request_body = request.body.nextEntry();
+	
+	//var quantity = '' + request_body.sysparm_quantity;
+	
+	var apiObj = new global.RestapiInvokerGlobal();
+
+	var quantity = '1';
+	var requested_for = '' + apiObj.getUserSysID(request_body.requester);
+	var noValidation =  (request_body.sysparm_no_validation == 'true');
+	
+	if (!/^\+?([0-9]*)$/.test(quantity))
+		throw new sn_ws_err.BadRequestError("Invalid Quantity value");
+	else
+		request_body.sysparm_quantity = quantity;
+	
+	
+	//var itemId = '' + request.pathParams.sys_id;
+	var itemId = '' + apiObj.getCatalogItemSysId(request_body.service_name);
+	request_body.sysparm_id = itemId;
+	
+    return {"message": "Hey "+request_body.requester+" your sys_id is "+requested_for, "will call service catalog": request_body.service_name };
+	
+})(request, response);]]&gt;&lt;/operation_script&gt;&lt;operation_uri&gt;/api/x_488231_demo/v1/tdcsn/submit_request&lt;/operation_uri&gt;&lt;produces&gt;application/json,application/xml,text/xml&lt;/produces&gt;&lt;produces_customized&gt;false&lt;/produces_customized&gt;&lt;relative_path&gt;/submit_request&lt;/relative_path&gt;&lt;request_example/&gt;&lt;requires_acl_authorization&gt;true&lt;/requires_acl_authorization&gt;&lt;requires_authentication&gt;true&lt;/requires_authentication&gt;&lt;requires_snc_internal_role&gt;true&lt;/requires_snc_internal_role&gt;&lt;short_description/&gt;&lt;sys_class_name&gt;sys_ws_operation&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2020-05-08 01:15:41&lt;/sys_created_on&gt;&lt;sys_id&gt;eb6e3acf2f6890108e83cfedf699b69e&lt;/sys_id&gt;&lt;sys_mod_count&gt;30&lt;/sys_mod_count&gt;&lt;sys_name&gt;submit_request_post&lt;/sys_name&gt;&lt;sys_package display_value="Demo" source="x_488231_demo"&gt;edbe3a0e2fe010108e83cfedf699b6c3&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Demo"&gt;edbe3a0e2fe010108e83cfedf699b6c3&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_ws_operation_eb6e3acf2f6890108e83cfedf699b69e&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2020-05-12 23:15:16&lt;/sys_updated_on&gt;&lt;web_service_definition display_value="tdcsn"&gt;2227fe8f2f6890108e83cfedf699b609&lt;/web_service_definition&gt;&lt;web_service_version display_value="v1"&gt;d677f2cf2f6890108e83cfedf699b653&lt;/web_service_version&gt;&lt;/sys_ws_operation&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>816981853</payload_hash>
+        <record_name>submit_request_post</record_name>
+        <reverted_from/>
+        <source>a1be3a0e2fe010108e83cfedf699b6c6</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-12 23:15:16</sys_created_on>
+        <sys_id>610314382fb450108e83cfedf699b6d4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1720b2bc05c0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-12 23:15:16</sys_updated_on>
+        <type>Scripted REST Resource</type>
+        <update_guid>e903143825b450102d0253860beb2cd3</update_guid>
+        <update_guid_history>e903143825b450102d0253860beb2cd3:816981853,17db9fa062f05010c5b220c9731c1d2f:-480002691,3434db2088f05010481e172c0f657d39:816981853,989bcf682cb050103116c4104d0f84e8:-480002691,7eba4fe093b05010f96019da6b5fbba3:816981853,a574c3246cb050101045764b9dddb9fc:-480002691,a4075314b874101053256cd0edd682a8:816981853,7ae657d4957410104087f222be0b17d0:1035035785,0ac6d3d41574101082b5240176462095:1261179452,c20453501d7410108c9cd21074efd544:-1833576972,06e35f10b5741010fb0e635cadec05c8:1786207636,ff5f8bdc85341010fac939ef4de9af35:-162177942,bd48cad8c33010109d4a7b13829a7f48:308439867,2d18c2106a701010a7bd89dcb528767c:-1518187361,f14240674724101031b9591986e7c8f4:-1621966718,a6a0c4638024101043e551be5bf52f41:-1518187361,9aeeb7539f2410104d49e351989a1c77:-144124898,a1fd7f13942410105ce8e55369faf7e1:939949076,128d7f13e72410102cedfd8b912b635f:-367399752,020df7dfbfe010100ae2a1e52462cc19:903902360,7b7bf35face01010ffb447848038bece:552415576,95fa7f1fd6e01010911c32636ccde28d:447181908,30aa7f1f2ee01010a738d9f3b1627512:-1821131694,d60a3f1f05e0101085e657c7558cf631:1495265650,afe97f1f79e01010cf37126ba39fab88:-1827192174,6ed9b71f43e01010f77dd7e9ed7414a5:-314282063,fea93b1fabe010108d9b4b3109a9dc4a:861456656,e9b8bb9b0ce01010d614a6de719ad461:1235148065,0ad7b75b86e0101080f360abb1e0c790:1731876732,a13083c7cba89010c09f3ab2ef8a9faf:800746565,3caeb2cb4168901067b55de76456e022:917461442</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-19 01:38:14</sys_created_on>
+        <sys_db_object display_value="" name="sys_ws_operation">sys_ws_operation</sys_db_object>
+        <sys_id>2501f300fc2e4f8c902a593539ad8391</sys_id>
+        <sys_metadata>eb6e3acf2f6890108e83cfedf699b69e</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>submit_request_post</sys_name>
+        <sys_package display_value="Demo" source="x_488231_demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_scope>
+        <sys_scope_delete display_value="">043d45d0e9794db4802b2302587605c1</sys_scope_delete>
+        <sys_update_name>sys_ws_operation_eb6e3acf2f6890108e83cfedf699b69e</sys_update_name>
+        <sys_update_version display_value="sys_ws_operation_eb6e3acf2f6890108e83cfedf699b69e">610314382fb450108e83cfedf699b6d4</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-19 01:38:14</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

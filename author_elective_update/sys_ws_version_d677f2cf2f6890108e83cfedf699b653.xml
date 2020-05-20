@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_version">
+    <sys_ws_version action="DELETE">
+        <active>true</active>
+        <deprecated>false</deprecated>
+        <is_default>true</is_default>
+        <short_description/>
+        <sys_class_name>sys_ws_version</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-08 00:44:23</sys_created_on>
+        <sys_id>d677f2cf2f6890108e83cfedf699b653</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>v1</sys_name>
+        <sys_package display_value="Demo" source="x_488231_demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_scope>
+        <sys_update_name>sys_ws_version_d677f2cf2f6890108e83cfedf699b653</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-08 00:44:23</sys_updated_on>
+        <version>1</version>
+        <version_id>v1</version_id>
+        <web_service_definition display_value="tdcsn">2227fe8f2f6890108e83cfedf699b609</web_service_definition>
+    </sys_ws_version>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Demo">edbe3a0e2fe010108e83cfedf699b6c3</application>
+        <file_path/>
+        <instance_id>3583f793dba75fc08264f70fbf9619d7</instance_id>
+        <instance_name>dev68372</instance_name>
+        <name>sys_ws_version_d677f2cf2f6890108e83cfedf699b653</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_version"><sys_ws_version action="INSERT_OR_UPDATE"><active>true</active><deprecated>false</deprecated><is_default>true</is_default><short_description/><sys_class_name>sys_ws_version</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-05-08 00:44:23</sys_created_on><sys_id>d677f2cf2f6890108e83cfedf699b653</sys_id><sys_mod_count>1</sys_mod_count><sys_name>v1</sys_name><sys_package display_value="Demo" source="x_488231_demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_package><sys_policy/><sys_scope display_value="Demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_scope><sys_update_name>sys_ws_version_d677f2cf2f6890108e83cfedf699b653</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2020-05-08 00:44:23</sys_updated_on><version>1</version><version_id>v1</version_id><web_service_definition display_value="tdcsn">2227fe8f2f6890108e83cfedf699b609</web_service_definition></sys_ws_version></record_update>]]></payload>
+        <payload_hash>-1406714010</payload_hash>
+        <record_name>v1</record_name>
+        <reverted_from/>
+        <source>a1be3a0e2fe010108e83cfedf699b6c6</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-08 00:44:23</sys_created_on>
+        <sys_id>da773acf2f6890108e83cfedf699b665</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>171f1bd8c410000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-08 00:44:23</sys_updated_on>
+        <type>Scripted REST Version</type>
+        <update_guid>5e77f2cf65689010b9ea23ebaf504857</update_guid>
+        <update_guid_history>5e77f2cf65689010b9ea23ebaf504857:-1406714010,5a77f2cfd86890101f13a5adbc86b555:-1222011643</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-05-19 01:38:14</sys_created_on>
+        <sys_db_object display_value="" name="sys_ws_version">sys_ws_version</sys_db_object>
+        <sys_id>7e4e07c1f83c43b09a170f309daca100</sys_id>
+        <sys_metadata>d677f2cf2f6890108e83cfedf699b653</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>v1</sys_name>
+        <sys_package display_value="Demo" source="x_488231_demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Demo">edbe3a0e2fe010108e83cfedf699b6c3</sys_scope>
+        <sys_scope_delete display_value="">043d45d0e9794db4802b2302587605c1</sys_scope_delete>
+        <sys_update_name>sys_ws_version_d677f2cf2f6890108e83cfedf699b653</sys_update_name>
+        <sys_update_version display_value="sys_ws_version_d677f2cf2f6890108e83cfedf699b653">da773acf2f6890108e83cfedf699b665</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-05-19 01:38:14</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
